@@ -1,5 +1,19 @@
 [
   {
+    "uid": "dagger",
+    "title": "КИНДЖАЛ",
+    "type": "melee_weapon",
+    "capacity": 0.5,
+    "weight": 0.3,
+    "minPrice": 500,
+    "description": "Ніж є одним з найбільш універсальних інструментів усіх часів та народів; його можна знайти як у кишені чесного ремісника, так і за поясом головоріза. Тримайте своє лезо при собі, а чуже – від себе подалі.",
+    "effects": [],
+    "damageType": "full",
+    "weaponSize": "short",
+    "lethal": 0,
+    "armorPiercing": 0
+  },
+  {
     "uid": "parring_dagger",
     "title": "ПАРУЮЧИЙ КИНЖАЛ",
     "type": "melee_weapon",
@@ -31,7 +45,7 @@
     "lethal": 1,
     "armorPiercing": 3,
     "reload": 15,
-    "distance": [15],
+    "distance": [ 15 ],
     "difficulty": 5,
     "hardAim": true,
     "ammo": 6,
