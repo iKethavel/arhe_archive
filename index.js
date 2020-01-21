@@ -1,25 +1,37 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
+require('dotenv').config()
+const mongoose = require('mongoose')
 
 const _items = require('./items.json')
+const _martialTraits = require('./martial_traits.json')
+const _mysticalAbilities = require('./mystical_abilities.json')
 
 const connectionOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }
 
-mongoose
-.connect(
-  `mongodb+srv://arhe1:${process.env.DB_PASS}@arhetericaclaster-5s8wz.mongodb.net/test?retryWrites=true&w=majority`, 
-  connectionOptions)
-.then(_mongoose => {
-  const { db } = _mongoose.connection;
+const bootstrap = async () => {
+  await mongoose.connect(
+    `mongodb+srv://arhe1:${process.env.DB_PASS}@arhetericaclaster-5s8wz.mongodb.net/test?retryWrites=true&w=majority`, 
+    connectionOptions
+  )
 
-  db.dropCollection('items')
-  db.collection('items').insertMany(_items)
+  const { db } = mongoose.connection
 
-}).then(() => {
+  // await db.dropCollection('items')
+  // await db.dropCollection('martialTraits')
+  // await db.dropCollection('mysticalAbilities')
+
+  await db.collection('items').insertMany(_items)
+  await db.collection('martialTraits').insertMany(_martialTraits)
+  await db.collection('mysticalAbilities').insertMany(_mysticalAbilities)
+
   console.log('Finished')
-  // process.exit(0);
-})
-.catch(console.error)
+  process.exit(0)
+}
+
+bootstrap().catch(err => {
+  console.error(err)
+
+  process.exit(1);
+});
