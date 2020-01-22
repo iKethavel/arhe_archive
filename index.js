@@ -5,6 +5,12 @@ const _items = require('./items.json')
 const _martialTraits = require('./martial_traits.json')
 const _mysticalAbilities = require('./mystical_abilities.json')
 
+const collectionsToEdit = [
+  'items',
+  'martialTraits',
+  'mysticalAbilities',
+]
+
 const connectionOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -18,9 +24,20 @@ const bootstrap = async () => {
 
   const { db } = mongoose.connection
 
-  // await db.dropCollection('items')
-  // await db.dropCollection('martialTraits')
-  // await db.dropCollection('mysticalAbilities')
+  const collectionsInDB = await db
+    .listCollections()
+    .toArray()
+  console.log('All: ', collectionsInDB)
+  
+  const collectionsToDrop = collectionsInDB
+    .filter(c => collectionsToEdit.includes(c.name))
+    .map(c => c.name)
+  console.log('To drop: ', collectionsToDrop)
+
+  collectionsToDrop.map(async collection => {
+    console.log(collection)
+    await db.dropCollection(collection)
+  })
 
   await db.collection('items').insertMany(_items)
   await db.collection('martialTraits').insertMany(_martialTraits)
