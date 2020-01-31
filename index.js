@@ -4,11 +4,13 @@ const mongoose = require('mongoose')
 const _items = require('./items.json')
 const _martialTraits = require('./martial_traits.json')
 const _mysticalAbilities = require('./mystical_abilities.json')
+const _metamorphoses = require('./metamorphoses.json')
 
 const collectionsToEdit = [
   'items',
   'martialTraits',
   'mysticalAbilities',
+  'metamorphoses',
 ]
 
 const connectionOptions = {
@@ -42,6 +44,7 @@ const bootstrap = async () => {
   await db.collection('items').insertMany(_items)
   await db.collection('martialTraits').insertMany(_martialTraits)
   await db.collection('mysticalAbilities').insertMany(_mysticalAbilities)
+  await db.collection('metamorphoses').insertMany(_metamorphoses)
 
   console.log('Finished')
   process.exit(0)
