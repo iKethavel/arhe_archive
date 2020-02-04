@@ -30,6 +30,8 @@ const bootstrap = async () => {
     .listCollections()
     .toArray()
   console.log('All: ', collectionsInDB)
+
+  
   
   const collectionsToDrop = collectionsInDB
     .filter(c => collectionsToEdit.includes(c.name))
