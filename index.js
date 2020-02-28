@@ -16,11 +16,13 @@ const collectionsToEdit = [
 const connectionOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
 }
 
 const bootstrap = async () => {
   await mongoose.connect(
-    `mongodb+srv://arhe1:${process.env.DB_PASS}@arhetericaclaster-5s8wz.mongodb.net/test?retryWrites=true&w=majority`, 
+    `mongodb+srv://arhe1:${process.env.DB_PASS}@arhetericaclaster-5s8wz.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, 
     connectionOptions
   )
 
