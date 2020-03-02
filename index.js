@@ -7,10 +7,22 @@ const _mysticalAbilities = require('./mystical_abilities.json')
 const _metamorphoses = require('./metamorphoses.json')
 
 const collectionsToEdit = [
-  'items',
-  'martialTraits',
-  'mysticalAbilities',
-  'metamorphoses',
+  {
+    name: 'items',
+    collection: require('./items.json'),
+  },
+  {
+    name: 'martialTraits',
+    collection: require('./martial_traits.json'),
+  },
+  {
+    name: 'mysticalAbilities',
+    collection: require('./mystical_abilities.json'),
+  },
+  {
+    name: 'metamorphoses',
+    collection: require('./metamorphoses.json'),
+  },
 ]
 
 const connectionOptions = {
@@ -31,24 +43,19 @@ const bootstrap = async () => {
   const collectionsInDB = await db
     .listCollections()
     .toArray()
-  console.log('All: ', collectionsInDB)
-
-  
+  // console.log('All: ', collectionsInDB)
   
   const collectionsToDrop = collectionsInDB
-    .filter(c => collectionsToEdit.includes(c.name))
+    .filter(c => collectionsToEdit.map(coll => coll.name).includes(c.name))
     .map(c => c.name)
   console.log('To drop: ', collectionsToDrop)
 
-  collectionsToDrop.map(async collection => {
+  await Promise.all(collectionsToDrop.map(collection => {
     console.log(collection)
-    await db.dropCollection(collection)
-  })
+    return db.dropCollection(collection)
+  }))
 
-  await db.collection('items').insertMany(_items)
-  await db.collection('martialTraits').insertMany(_martialTraits)
-  await db.collection('mysticalAbilities').insertMany(_mysticalAbilities)
-  await db.collection('metamorphoses').insertMany(_metamorphoses)
+  await Promise.all(collectionsToEdit.map(coll => db.collection(coll.name).insertMany(coll.collection)))
 
   console.log('Finished')
   process.exit(0)
