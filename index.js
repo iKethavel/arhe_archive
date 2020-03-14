@@ -23,6 +23,10 @@ const collectionsToEdit = [
     name: 'metamorphoses',
     collection: require('./metamorphoses.json'),
   },
+  {
+    name: 'martialArts',
+    collection: require('./martial_arts.json')
+  }
 ]
 
 const connectionOptions = {
