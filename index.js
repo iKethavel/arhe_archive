@@ -1,11 +1,6 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 
-const _items = require('./items.json')
-const _martialTraits = require('./martial_traits.json')
-const _mysticalAbilities = require('./mystical_abilities.json')
-const _metamorphoses = require('./metamorphoses.json')
-
 const collectionsToEdit = [
   {
     name: 'items',
