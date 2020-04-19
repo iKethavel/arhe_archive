@@ -21,6 +21,10 @@ const collectionsToEdit = [
   {
     name: 'martialArts',
     collection: require('./martial_arts.json')
+  },
+  {
+    name: 'madnesses',
+    collection: require('./mad.json') // TODO replace here!
   }
 ]
 
