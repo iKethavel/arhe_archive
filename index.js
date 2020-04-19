@@ -24,7 +24,7 @@ const collectionsToEdit = [
   },
   {
     name: 'madnesses',
-    collection: require('./mad.json') // TODO replace here!
+    collection: require('./madnesses.json') // TODO replace here!
   }
 ]
 
