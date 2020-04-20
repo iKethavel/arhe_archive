@@ -1,16 +1,23 @@
 const fs = require('fs')
-const utils = require('./utils')
+const utils = require('../utils')
 // const collection = require('./madnesses.json')
 
 const formatting = str => str.replace(/[\n\r]/g, '').replace(/\s\s+/g, ' ');
 
 const collection = 
-  formatting(fs.readFileSync('./madnesses.json').toString())
+  formatting(fs.readFileSync('./injuries.json').toString())
     
-const parsed = JSON.parse(collection).map(mad => ({ ...mad, title: utils.toCapital(mad.title) }))
+const parsed = JSON.parse(collection).map(injury => (
+  { 
+    uid: injury.uid,
+    title: utils.toCapital(injury.title.trim()),
+    type: injury.type.trim(),
+    description: injury.description
+  })
+)
 
 
-fs.writeFileSync('./mad.json', JSON.stringify(parsed))
+fs.writeFileSync('./update.json', JSON.stringify(parsed))
 
 // const collectionsToEdit = [
 //   {
