@@ -6,7 +6,7 @@ export type MartialTrait = {
   title: string
   uid: MartialTraitUid
   tier: 2 | 3 | 4 | 5 | 6
-  cost: 2 | 3 | 4 | 5 | 6 | 'X'
+  cost: number
   requirements?: string
   description: string
   rule: string
