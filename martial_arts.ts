@@ -1,4 +1,6 @@
-[
+import { MartialArt } from "./types";
+
+const martialArts: MartialArt[] = [
   {
     "title": "Класична Техніка",
     "uid": "classic",
@@ -474,3 +476,5 @@
     ]
   }
 ]
+
+export default martialArts

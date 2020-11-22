@@ -1,4 +1,6 @@
-[
+import { ItemGeneral, ItemMeleeWeapon, ItemMissileWeapon, ItemFirearm, ItemGrenade, ItemArmor } from "./types";
+
+const items: (ItemGeneral | ItemMeleeWeapon | ItemMissileWeapon | ItemFirearm | ItemGrenade | ItemArmor)[] = [
     {
         "title": "Домашня Тварина",
         "uid": "pet",
@@ -8,7 +10,7 @@
         "masteryRank": 0,
         "description": "На втіху Вам та вашим друзям. Не забувайте годувати та доглядати вашого підопічного, адже ми відповідальні за тих, кого купили.",
         "effects": [],
-        "capacity": 0
+        "capacity": 0,
     },
     {
         "title": "Книжний Набір",
@@ -1587,7 +1589,7 @@
         ],
         "difficulty": 6,
         "hardAim": false,
-        "twoHanded": true
+        "twoHanded": true,
     },
     {
         "title": "Димова Граната",
@@ -1754,11 +1756,8 @@
         "minPrice": 3000,
         "masteryRank": 0,
         "description": "",
-        "effects": [
-            ""
-        ],
+        "effects": [],
         "meta": [],
-        "damageType": "absent",
         "armor": 1,
         "heavyArmor": 0
     },
@@ -1775,7 +1774,6 @@
             ""
         ],
         "meta": [],
-        "damageType": "absent",
         "armor": 2,
         "heavyArmor": 2
     },
@@ -1792,7 +1790,6 @@
             ""
         ],
         "meta": [],
-        "damageType": "absent",
         "armor": 1,
         "heavyArmor": 1
     },
@@ -1810,8 +1807,9 @@
             "Повний обладунок включає у себе підлатник (дублет), кірасу та два набори елементів броні, котрі можна використовувати окремо; втім, із різних елементів, кіраси та дублету, що не є одним комплектом, не вдасться зібрати повний обладунок."
         ],
         "meta": [],
-        "damageType": "absent",
         "armor": 4,
         "heavyArmor": 4
     }
 ]
+
+export default items

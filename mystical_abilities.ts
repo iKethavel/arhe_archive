@@ -1,4 +1,6 @@
-[
+import { MysticalAbility } from "./types";
+
+const mysticalAbilities: MysticalAbility[] = [
   {
     "title": "Інтуіція",
     "uid": "intuition",
@@ -489,3 +491,5 @@
     ]
   }
 ]
+
+export default mysticalAbilities

@@ -1,34 +1,44 @@
-require('dotenv').config()
-const mongoose = require('mongoose')
+import { config } from 'dotenv'
+import * as mongoose from 'mongoose'
+
+config()
+
+import items from './items'
+import martial_traits from './martial_traits'
+import mystical_abilities from './mystical_abilities'
+import metamorphoses from './metamorphoses'
+import martial_arts from './martial_arts'
+import madnesses from './madnesses'
+import injuries from './injuries'
 
 const collectionsToEdit = [
   {
     name: 'items',
-    collection: require('./items.json'),
+    collection: items,
   },
   {
     name: 'martialTraits',
-    collection: require('./martial_traits.json'),
+    collection: martial_traits,
   },
   {
     name: 'mysticalAbilities',
-    collection: require('./mystical_abilities.json'),
+    collection: mystical_abilities,
   },
   {
     name: 'metamorphoses',
-    collection: require('./metamorphoses.json'),
+    collection: metamorphoses,
   },
   {
     name: 'martialArts',
-    collection: require('./martial_arts.json')
+    collection: martial_arts,
   },
   {
     name: 'madnesses',
-    collection: require('./madnesses.json')
+    collection: madnesses,
   },
   {
     name: 'injuries',
-    collection: require('./injuries.json')
+    collection: injuries,
   }
 ]
 
@@ -41,7 +51,7 @@ const connectionOptions = {
 
 const bootstrap = async () => {
   await mongoose.connect(
-    `mongodb+srv://arhe1:${process.env.DB_PASS}@arhetericaclaster-5s8wz.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, 
+    `mongodb+srv://arhe1:${process.env.DB_PASS}@arhetericaclaster-5s8wz.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
     connectionOptions
   )
 
@@ -51,7 +61,7 @@ const bootstrap = async () => {
     .listCollections()
     .toArray()
   // console.log('All: ', collectionsInDB)
-  
+
   const collectionsToDrop = collectionsInDB
     .filter(c => collectionsToEdit.map(coll => coll.name).includes(c.name))
     .map(c => c.name)
