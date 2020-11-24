@@ -242,3 +242,16 @@ export type MysticalAbilitiesUid =
   | "archeflash"
   | "person_of_triumph"
   | "true_fate_mark"
+
+export type AnchorUid =
+  | 'hidden'
+  | 'oblivion'
+  | 'vis-a-vis'
+  | 'metamedical'
+  | 'evil-spirit'
+  | 'ritual'
+  | 'rethinking'
+  | 'pilgrimage'
+  | 'arhetherapy'
+  | 'masterpieces'
+  | 'time'

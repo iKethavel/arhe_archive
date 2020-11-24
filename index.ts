@@ -10,6 +10,7 @@ import metamorphoses from './metamorphoses'
 import martial_arts from './martial_arts'
 import madnesses from './madnesses'
 import injuries from './injuries'
+import anchors from './anchors'
 
 const collectionsToEdit = [
   {
@@ -39,7 +40,11 @@ const collectionsToEdit = [
   {
     name: 'injuries',
     collection: injuries,
-  }
+  },
+  {
+    name: 'anchors',
+    collection: anchors,
+  },
 ]
 
 const connectionOptions = {

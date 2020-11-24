@@ -1,4 +1,4 @@
-import { MartialTraitUid, InjureUid, MetamorphosesUid, MysticalAbilitiesUid } from "./uids";
+import { MartialTraitUid, InjureUid, MetamorphosesUid, MysticalAbilitiesUid, AnchorUid } from "./uids";
 
 type Deprecated = '0.21'
 
@@ -48,6 +48,15 @@ export type Metamorphose = {
   effects: string[]
   extras: string[]
   deprecated?: Deprecated
+}
+
+
+
+export type Anchor = {
+  title: string
+  uid: AnchorUid
+  description: string
+  effects: string[]
 }
 
 export type MysticalAbility = {
