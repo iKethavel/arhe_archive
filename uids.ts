@@ -41,6 +41,7 @@ export type MartialTraitUid =
   | "fencing:live_sting"
   | "fencing:maestro`s_blade"
   | "fencing:fencing_pair"
+  | "fencing:goon"
   | "fencing_etiquette"
   | "hammering nails"
   | "battle_prayer"
